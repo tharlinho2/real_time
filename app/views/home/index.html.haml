@@ -1,0 +1,4 @@
+= link_to "Sair", destroy_user_session_path, class: "text-danger text-decoration-none", data: {turbo_method: :delete, turbo_confirm: "Tem certeza que deseja sair?"}
+
+%div.mt-5{style: "height: 81%", data: { controller: 'location', 'user-id': current_user.id}}
+  = render partial: 'map', format: 'html', locals: { data_coords: @data_coords }

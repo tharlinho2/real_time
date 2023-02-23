@@ -77,3 +77,19 @@ end
 # Haml-Rails
 gem "haml-rails"
 gem 'html2haml'
+
+# Authenticate
+gem "devise"
+
+gem 'leaflet-rails'
+
+gem "actioncable", "~> 7.0"
+
+gem "cable_ready", "= 5.0.0.pre10"
+gem "hiredis"
+
+gem "stimulus_reflex"
+gem "wannabe_bool", "~> 0.7.1"
+
+
+gem "ofx"

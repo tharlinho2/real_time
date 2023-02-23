@@ -1,0 +1,114 @@
+#map{:style => "height: 98%"}
+
+:javascript
+  var dataCoords = JSON.parse("#{j @data_coords.to_json}")
+
+  var map = L.map('map').setView([-11.372379, -51.501707], 4);
+
+  var currentId = "#{current_user.id}"
+
+  function getAll() {
+    for (var i =0; i < dataCoords.length; i++) {
+      if (dataCoords[i].id == currentId) {
+         const options = {
+            animate: true
+        }
+
+         map.flyTo([dataCoords[i].latitude, dataCoords[i].longitude], 14, options);
+      }
+    }
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
+        maxZoom: 19,
+    }).addTo(map);
+
+
+    for (var i = 0; i < dataCoords.length; i++) {
+      addMarker(dataCoords[i])
+    }
+  }
+
+  setTimeout(() => {
+    getAll()
+  }, 500)
+
+  function newMarkerUser(event) {
+    setTimeout(() => {
+      addMarker(event.detail);
+
+      if (event.detail.id == currentId) {
+        const options = {
+          animate: true
+        }
+
+        map.flyTo([event.detail.latitude, event.detail.longitude], 14, options)
+      }
+    }, 1000)
+  }
+
+  function updateMarkerUser(event) {
+    setTimeout(() => {
+      const myMarker = findMarkerById(event.detail.id);
+
+      if (myMarker) {
+        marker.setLatLng([event.detail.latitude, event.detail.longitude]);
+      }
+    }, 1000)
+  }
+
+  function iconPng(data) {
+      if (data.id == currentId) {
+        return "#{image_path('my_location.png')}"
+      } else {
+        return "#{image_path('user.png')}"
+      }
+  }
+
+    function iconSize(data) {
+      if (data.id == currentId) {
+        return [24, 24]
+      } else {
+        return [30, 30]
+      }
+    }
+
+  function addMarker(data) {
+
+    var myIcon = L.icon({
+        iconUrl: iconPng(data),
+        iconSize: iconSize(data),
+        popupAnchor: [0, -20],
+        className: ''
+    });
+
+    const options = {
+      id: data.id,
+      draggable: false,
+      icon: myIcon
+    };
+
+    L.marker([data.latitude, data.longitude], options).addTo(map).bindPopup(data.html);
+  }
+
+  function findMarkerById(id) {
+    map.eachLayer(function(layer) {
+      if (layer instanceof L.Marker && layer.options.id == id) {
+        return layer;
+      }
+    });
+
+    return null;
+  }
+
+  // function remove(event) {
+  //   const allMarkers = Object.values(map._layers).filter(layer => layer instanceof L.Marker);
+  //
+  //   // Remove cada marcador do mapa
+  //   allMarkers.forEach(marker => map.removeLayer(marker));
+  // }
+
+  // self.addEventListener('load', getAll);
+  self.addEventListener('update_marker_user', updateMarkerUser);
+  self.addEventListener('new_marker_user', newMarkerUser);
+  // self.addEventListener('remove', txtEvent);

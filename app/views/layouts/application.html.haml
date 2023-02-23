@@ -1,12 +1,27 @@
 !!!
-%html
+%html.h-100
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %title MapRealTime
     %meta{:content => "width=device-width,initial-scale=1", :name => "viewport"}/
     = csrf_meta_tags
     = csp_meta_tag
+    = action_cable_meta_tag
+
+    %link{:crossorigin => "use-credentials", :href => "/manifest.json", :rel => "manifest"}/
+
+    %link{:href => "https://unpkg.com/leaflet@1.7.1/dist/leaflet.css", :rel => "stylesheet"}/
+    %script{:src => "https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"}
+
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
     = javascript_include_tag "application", "data-turbo-track": "reload", defer: true
-  %body
-    = yield
+  %body.h-100
+    .container.h-100
+      = cable_ready_stream_from :foo
+
+      - if notice
+        %p.notice.alert.alert-success= notice
+      - if alert
+        %p.alert.alert.alert-danger= alert
+
+      = yield
