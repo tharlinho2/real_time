@@ -1,0 +1,5 @@
+.pb-2
+  %h2 Mapa
+
+#map-div{ style: "height: 90%", data: { controller: 'location', 'user-id': current_user.id}}
+  = render partial: 'map', format: 'html', locals: { data_coords: @data_coords }

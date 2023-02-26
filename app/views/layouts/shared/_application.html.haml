@@ -1,0 +1,8 @@
+.row.w-100.h-100.p-4
+  .col-2
+    = render 'layouts/shared/menu'
+
+  .col-10{style: "margin-top: 60px"}
+    .card.h-100
+      .card-body.p-4{id: "card-body-main"}
+        = yield

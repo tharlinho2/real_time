@@ -1,0 +1,4 @@
+= render 'devise/mailer/mailer_header' do
+  %h2{:style => "font-family:Helvetica Neue,Helvetica,Arial,Lucida Grande,sans-serif;font-weight:500;font-size:20px;color:#4f545c;letter-spacing:0.27px"} Bem vindo #{@resource.name}!
+  %p Você pode confirmar o e-mail #{@email} de sua conta através do link abaixo:
+  %p= link_to 'Confirmar minha conta', confirmation_url(@resource, confirmation_token: @token)

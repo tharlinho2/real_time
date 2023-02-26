@@ -1,2 +1,24 @@
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
+@import "material";
+
+html, body {
+  height: 100%;
+}
+
+body {
+  background-color: #121225;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+}
+
+#logo-title {
+  font-family: 'Rokkitt';
+  font-style: normal;
+  font-weight: bold;
+}
+
+.floating-label.is-focused > label {
+  top: -1px;
+}

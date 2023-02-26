@@ -1,6 +1,19 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  post 'use/create'
+  # cable
+  mount ActionCable.server => "/cable"
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  root to: "home#index"
+
+  get 'home/index'
+
+  devise_for :users, controllers: {
+    sessions: 'users/sessions',
+    registrations: 'users/registrations'
+  }
+
+  get '/card/:id', to: 'use#card'
+
+  get "/service-worker.js" => "service_worker#service_worker"
+  get "/manifest.json" => "service_worker#manifest"
 end

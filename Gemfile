@@ -73,3 +73,29 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+# Haml-Rails
+gem "haml-rails"
+gem 'html2haml'
+
+# Authenticate
+gem "devise"
+
+# I18n
+gem "devise-i18n"
+gem "rails-i18n"
+
+gem 'leaflet-rails'
+
+gem "actioncable", "~> 7.0"
+
+gem "cable_ready", "= 5.0.0.pre10"
+gem "hiredis"
+
+gem "stimulus_reflex"
+gem "wannabe_bool", "~> 0.7.1"
+
+gem "ofx"
+
+
+gem "foreman", "~> 0.87.2"
