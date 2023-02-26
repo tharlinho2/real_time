@@ -1,10 +1,13 @@
-%h2 Resend confirmation instructions
+.col-12.d-grid.justify-content-center.mt-4.mb-4
+  %h3 Reenviar instruções de confirmação
+
 = form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f|
-  = render "devise/shared/error_messages", resource: resource
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email)
-  .actions
-    = f.submit "Resend confirmation instructions"
+  .form-group
+    .floating-label
+      = f.label :email
+      = f.email_field :email, class: "form-control", placeholder: "E-mail", autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email)
+
+  .col-12.d-grid.justify-content-center.mt-4.mb-4
+    = f.submit "Reenviar instruções de confirmação", class: "btn btn-primary"
+
 = render "devise/shared/links"

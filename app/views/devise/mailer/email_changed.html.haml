@@ -1,8 +1,6 @@
-%p
-  Hello #{@email}!
-- if @resource.try(:unconfirmed_email?)
-  %p
-    We're contacting you to notify you that your email is being changed to #{@resource.unconfirmed_email}.
-- else
-  %p
-    We're contacting you to notify you that your email has been changed to #{@resource.email}.
+= render 'devise/mailer/mailer_header' do
+  %h2{:style => "font-family:Helvetica Neue,Helvetica,Arial,Lucida Grande,sans-serif;font-weight:500;font-size:20px;color:#4f545c;letter-spacing:0.27px"} Olá, #{@resource.name}!
+  - if @resource.try(:unconfirmed_email?)
+    %p Estamos entrando em contato para notificá-lo de que seu e-mail está sendo alterado para #{@resource.unconfirmed_email}.
+  - else
+    %p Estamos entrando em contato para notificá-lo de que seu e-mail foi alterado para #{@resource.email}.

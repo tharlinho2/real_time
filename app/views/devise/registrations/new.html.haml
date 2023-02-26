@@ -1,30 +1,58 @@
-%h2 Sign up
-= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-  = render "devise/shared/error_messages", resource: resource
-  .field
-    = f.label :name
-    %br/
-    = f.text_field :name, autofocus: true
+.col-12.d-grid.justify-content-center.mt-4
+  %h3 Inscrever-se
 
-  .field
-    = f.label :username
-    %br/
-    = f.text_field :username
+= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { data: { turbo: false } }) do |f|
+  .form-group
+    .floating-label
+      = f.label :name
+      = f.text_field :email, class: "form-control", placeholder: "Nome Completo"
 
-  .field
-    = f.label :password
-    - if @minimum_password_length
-      %em
-        (#{@minimum_password_length} characters minimum)
-    %br/
-    = f.password_field :password, autocomplete: "new-password"
+  .form-group
+    .floating-label
+      = f.label :email
+      = f.email_field :email, class: "form-control", placeholder: "E-mail"
 
-  .field
-    = f.label :password_confirmation
-    %br/
-    = f.password_field :password_confirmation, autocomplete: "new-password"
+  .form-group
+    .floating-label
+      = f.label :password
+      .input-group
+        = f.password_field :password, id: "password", class: "form-control", placeholder: "Senha"
+        %span.material-symbols-outlined#togglePassword{:type => "button"} visibility_off
+      - if @minimum_password_length
+        %em.fw-lighter.text-muted #{@minimum_password_length} caracteres no mínimo
 
-  .actions
-    = f.submit "Sign up"
+  .form-group
+    .floating-label
+      = f.label :password_confirmation
+      .input-group
+        = f.password_field :password_confirmation, id: "passwordConfirmation", class: "form-control", placeholder: "Senha"
+        %span.material-symbols-outlined#togglePasswordConfirmation{:type => "button"} visibility_off
+
+  .col-12.d-grid.justify-content-center.mt-5
+    = f.submit "Inscrever-se", class: "btn btn-primary"
+
+  .col-12.d-flex.justify-content-center.mt-4.mb-3
+    %p Já tem uma conta?
+    = link_to new_user_session_path, class: "text-decoration-none" do
+      %span.text-primary.ms-1 Entrar
 
 = render "devise/shared/links"
+
+:javascript
+  const passwordInput = document.querySelector('#password');
+  const togglePasswordButton = document.querySelector('#togglePassword');
+
+  togglePasswordButton.addEventListener('click', function() {
+    const type = passwordInput.getAttribute('type') === 'text' ? 'password' : 'text';
+    passwordInput.setAttribute('type', type);
+    this.innerHTML = type === 'text' ? '<span class="material-symbols-outlined">visibility</span>' : '<span class="material-symbols-outlined">visibility_off</span>';
+  });
+
+  const passwordConfirmationInput = document.querySelector('#passwordConfirmation');
+  const togglepasswordConfirmationButton = document.querySelector('#togglePasswordConfirmation');
+
+  togglepasswordConfirmationButton.addEventListener('click', function() {
+    const type = passwordConfirmationInput.getAttribute('type') === 'text' ? 'password' : 'text';
+    passwordConfirmationInput.setAttribute('type', type);
+    this.innerHTML = type === 'text' ? '<span class="material-symbols-outlined">visibility</span>' : '<span class="material-symbols-outlined">visibility_off</span>';
+  });

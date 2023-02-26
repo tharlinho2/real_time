@@ -81,6 +81,10 @@ gem 'html2haml'
 # Authenticate
 gem "devise"
 
+# I18n
+gem "devise-i18n"
+gem "rails-i18n"
+
 gem 'leaflet-rails'
 
 gem "actioncable", "~> 7.0"

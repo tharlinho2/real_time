@@ -19,6 +19,7 @@ module MapRealTime
 
     config.action_cable.mount_path = "/cable"
 
+    config.i18n.default_locale = "pt-BR"
     config.time_zone = 'America/Sao_Paulo'
     # config.eager_load_paths << Rails.root.join("extras")
   end

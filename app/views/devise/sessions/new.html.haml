@@ -1,21 +1,40 @@
-%h2 Log in
-= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  .field
-    = f.label :username
-    %br/
-    = f.text_field :username
+.col-12.d-grid.justify-content-center.mt-4
+  %h3 Entrar
 
-  .field
-    = f.label :password
-    %br/
-    = f.password_field :password, autocomplete: "current-password"
+= form_for(resource, as: resource_name, url: session_path(resource_name), html: { data: { turbo: false } }) do |f|
+  .form-group
+    .floating-label
+      = f.label :email
+      = f.email_field :email, class: "form-control", placeholder: "E-mail"
+
+  .form-group
+    .floating-label
+      = f.label :password
+      .input-group
+        = f.password_field :password, id: "password", class: "form-control", placeholder: "Senha"
+        %span.material-symbols-outlined#togglePassword{:type => "button"} visibility_off
 
   - if devise_mapping.rememberable?
-    .field
-      = f.check_box :remember_me
+    .form-check
+      = f.check_box :remember_me, class: "form-check-input"
       = f.label :remember_me
 
-  .actions
-    = f.submit "Log in"
+  .col-12.d-grid.justify-content-center.mt-4
+    = f.submit "Entrar", class: "btn btn-primary"
+
+  .col-12.d-flex.justify-content-center.mt-4.mb-4
+    %p Não tem conta?
+    = link_to new_user_registration_path, class: "text-decoration-none" do
+      %span.text-primary.ms-1 Inscrever-se
 
 = render "devise/shared/links"
+
+:javascript
+  const passwordInput = document.querySelector('#password');
+  const togglePasswordButton = document.querySelector('#togglePassword');
+
+  togglePasswordButton.addEventListener('click', function() {
+    const type = passwordInput.getAttribute('type') === 'text' ? 'password' : 'text';
+    passwordInput.setAttribute('type', type);
+    this.innerHTML = type === 'text' ? '<span class="material-symbols-outlined">visibility</span>' : '<span class="material-symbols-outlined">visibility_off</span>';
+  });
