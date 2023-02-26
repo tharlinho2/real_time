@@ -92,7 +92,8 @@ gem "actioncable", "~> 7.0"
 gem "cable_ready", "= 5.0.0.pre10"
 gem "hiredis"
 
-gem "stimulus_reflex"
+gem 'stimulus_reflex', '~> 3.5.0.pre10'
+
 gem "wannabe_bool", "~> 0.7.1"
 
 gem "ofx"
