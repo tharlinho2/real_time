@@ -95,5 +95,7 @@ gem "hiredis"
 gem "stimulus_reflex"
 gem "wannabe_bool", "~> 0.7.1"
 
-
 gem "ofx"
+
+
+gem "foreman", "~> 0.87.2"
