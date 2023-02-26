@@ -14,6 +14,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     super do |resource|
       flash.now[:alert] = resource.errors.full_messages
       return redirect_to new_user_session_path, notice: t('devise.confirmations.send_instructions') if resource.persisted?
+      return redirect_to new_user_registration_path, alert: resource.errors.full_messages unless resource.persisted?
     end
   end
 
