@@ -11,7 +11,7 @@
     "cable_ready": "^5.0.0-pre10",
     "esbuild": "^0.17.9",
     "sass": "^1.58.3",
-    "stimulus_reflex": "3.5.0",
+    "stimulus_reflex": "3.5.0-pre10",
     "daemonite-material": "github:Daemonite/material",
     "jquery": "3.4.1"
   },
