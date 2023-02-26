@@ -1,0 +1,50 @@
+.col
+  %h1.text-white#logo-title GeoChat
+
+-# .row.text-white.mb-4
+-#   .col-2
+-#     %i.bi.bi-person-circle{style: "font-size: 40px;"}
+-#   .col-9.pt-2{style: "margin-left: 10px"}
+-#     %div.text-truncate Tharles Ribeiro
+-#     %div.text-truncate tharlinho2@gmail.com
+
+.d-flex.text-white.mb-4
+  %i.bi.bi-person-circle{style: "font-size: 40px;"}
+  %div.ms-2.text-truncate.w-100.pt-1
+    %div.text-truncate Tharles Ribeiro
+    %div.text-truncate tharlinho2@gmail.com
+
+
+.row{style: "color: #069FF4; font-size: 20px;"}
+  .col-1.me-2
+    %i.bi.bi-house
+  .col-auto
+    %p Inicio
+
+.row{style: "color: #fff; font-size: 20px;"}
+  .col-1.me-2
+    %i.bi.bi-search
+  .col-auto
+    %p Buscar
+
+.row{style: "color: #fff; font-size: 20px;"}
+  .col-1.me-2
+    %i.bi.bi-chat-left-text-fill
+  .col-auto
+    %p Conversas
+
+.pb-2#row-end
+  = link_to destroy_user_session_path, class: "text-decoration-none", data: {turbo_method: :delete, turbo_confirm: "Tem certeza que deseja sair?"} do
+    .row{style: "color: #DE2509; font-size: 20px; "}
+      .col-1.me-1
+        %i.bi.bi-box-arrow-left
+      .col-auto
+        %p Sair
+
+:css
+  #row-end {
+    position: absolute;
+    bottom: 10px;
+    width: auto;
+    max-height: 20px
+  }

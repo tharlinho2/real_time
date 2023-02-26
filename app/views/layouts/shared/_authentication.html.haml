@@ -1,0 +1,12 @@
+.container.h-100
+  .row.h-100
+    .col-6.d-grid.align-items-center
+      .col.align-self-end
+        = get_svg('logo.svg')
+      .col.align-self-start
+        %h5.text-white Veja em tempo real, as pessoas que estão perto de você
+
+    .col-6.d-grid.align-items-center
+      .card.rounded-4
+        .card-body
+          = yield
