@@ -211,6 +211,7 @@ GEM
       actionpack (>= 5.2)
       railties (>= 5.2)
     rexml (3.2.5)
+    ruby_http_client (3.5.5)
     ruby_parser (3.19.2)
       sexp_processor (~> 4.16)
     rubyzip (2.3.2)
@@ -218,6 +219,8 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
+    sendgrid-ruby (6.6.2)
+      ruby_http_client (~> 3.4)
     sexp_processor (4.16.1)
     sprockets (4.2.0)
       concurrent-ruby (~> 1.0)
@@ -295,6 +298,7 @@ DEPENDENCIES
   rails-i18n
   redis (~> 4.0)
   selenium-webdriver
+  sendgrid-ruby
   sprockets-rails
   stimulus-rails
   stimulus_reflex (~> 3.5.0.pre10)
