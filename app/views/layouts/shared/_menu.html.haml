@@ -11,8 +11,8 @@
 .d-flex.text-white.mb-4
   %i.bi.bi-person-circle{style: "font-size: 40px;"}
   %div.ms-2.text-truncate.w-100.pt-1
-    %div.text-truncate Tharles Ribeiro
-    %div.text-truncate tharlinho2@gmail.com
+    %div.text-truncate= current_user.name
+    %div.text-truncate= current_user.email
 
 
 .row{style: "color: #069FF4; font-size: 20px;"}
