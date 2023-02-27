@@ -1,4 +1,4 @@
-web: unset PORT && bin/rails server
+web: bin/rails db:migrate && unset PORT && bin/rails server
 js: yarn build --watch
 css: yarn build:css --watch
 mailcatcher: mailcatcher -f --ip=0.0.0.0
