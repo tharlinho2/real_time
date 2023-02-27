@@ -98,5 +98,6 @@ gem "wannabe_bool", "~> 0.7.1"
 
 gem "ofx"
 
+gem 'sendgrid-ruby'
 
 gem "foreman", "~> 0.87.2"
